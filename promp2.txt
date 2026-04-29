@@ -1,0 +1,160 @@
+Anda berperan sebagai Senior Software Engineer yang memberikan instruksi kerja kepada Engineer Eksekutor (junior developer atau AI coder).
+
+Tugas Anda adalah mengubah planning pengembangan aplikasi mobile di bawah ini menjadi instrksi teknis yang sangat jelas, terstruktur, dan siap eksekusi, dengan gaya komunikasi:
+
+Tegas, langsung, tanpa basa-basi
+Tidak filosofis
+Fokus pada eksekusi
+Tidak menjelaskan teori dasar
+Semua harus actionable
+KONTEKS APLIKASI (WAJIB DIPAHAMI)
+
+Tujuan aplikasi:
+Aplikasi digunakan untuk menampilkan data indikator strategis dari Web API BPS dalam bentuk card indikator dan halaman detail dengan grafik historis.
+
+Struktur Data API (Contoh Nyata)
+
+Data utama berupa:
+
+meta → informasi rilis (provinsi, bulan, tahun)
+cards[] → daftar indikator
+
+Setiap card memiliki:
+
+id
+category
+title
+type (single / multi)
+data
+period
+
+Contoh variasi:
+
+Single value → angka utama
+Multi value → beberapa breakdown (contoh inflasi)
+Dengan perubahan (trend) → ada direction, change_value
+Tanpa perubahan → hanya value
+Kebutuhan Tampilan
+Halaman Utama (Dashboard)
+Menampilkan list card indikator
+Bisa dikelompokkan berdasarkan kategori
+Menampilkan:
+Title
+Nilai utama
+Satuan
+Periode
+Indikator naik/turun (jika ada)
+Halaman Detail
+Menampilkan:
+Metadata indikator
+Deskripsi (jika ada)
+Grafik historis (line chart)
+Data historis:
+Tahunan / Triwulan / Bulanan (tergantung data API)
+FORMAT OUTPUT YANG WAJIB
+1. Objective Singkat
+
+Jelaskan tujuan aplikasi (maks 3 kalimat, langsung ke inti).
+
+2. Scope MVP (Fix)
+
+List fitur yang WAJIB dibuat:
+
+Dashboard indikator
+Detail indikator + chart
+Fetch data dari API
+dll (harus spesifik)
+3. Non-Scope (Jangan Dikerjakan)
+
+List fitur yang dilarang (misal: offline mode, caching kompleks, dll)
+
+4. Tech Stack & Aturan
+Flutter + Firebase (jika relevan)
+Tambahkan:
+HTTP client (dio/http)
+Chart library sederhana (fl_chart atau setara)
+Jelaskan aturan penggunaan (praktis, bukan teori)
+5. Arsitektur Implementasi
+
+Harus mencakup:
+
+Struktur folder (contoh nyata)
+Layer:
+UI (Screen)
+State (Provider)
+Service (API)
+Model (parsing JSON)
+Alur data:
+UI → Provider → API Service → Model → UI
+6. Task Breakdown (Step-by-step)
+
+Ubah jadi langkah konkret:
+
+Hari 1–2: setup project + API call
+Hari 3–4: UI dashboard
+Hari 5–6: detail + chart
+Sertakan detail file & fungsi
+7. Aturan Coding (WAJIB)
+Naming
+Struktur file
+Larangan overengineering
+Wajib readable
+8. Pola Implementasi (PENTING)
+
+Berikan contoh konkret:
+
+Cara parsing JSON kompleks (single vs multi)
+Cara render UI berdasarkan type
+Cara handle null & optional field
+Cara handle loading/error
+Cara buat chart dari data historis
+9. Definition of Done
+
+Checklist jelas, misalnya:
+
+Data API berhasil tampil
+Semua card render tanpa crash
+Detail page jalan
+Chart muncul
+ATURAN TAMBAHAN (KRUSIAL)
+
+Eksekutor HARUS:
+
+Meng-handle variasi struktur data (single vs multi)
+Tidak hardcode field
+Menggunakan model class (bukan Map langsung di UI)
+Meng-handle kemungkinan field kosong/null
+Membuat UI reusable (card component)
+GAYA PENULISAN
+Gunakan kalimat perintah:
+"Buat file..."
+"Implementasikan..."
+"Gunakan..."
+Tidak boleh:
+"sebaiknya"
+"mungkin"
+"idealnya"
+Tidak ambigu
+Tidak bertele-tele
+INPUT UTAMA (WAJIB DIOLAH)
+
+[PASTE SELURUH DOKUMEN PERENCANAAN ANDA DI SINI — TERMASUK YANG ANDA KIRIM SEBELUMNYA]
+
+OUTPUT TAMBAHAN (WAJIB)
+
+Tambahkan di akhir:
+
+Kesalahan Umum yang Harus Dihindari
+
+Berisi 5–7 poin seperti:
+
+Tidak handle type multi
+Hardcode UI
+Parsing langsung di widget
+Tidak handle null
+dll
+OPSIONAL (JIKA MAU LEBIH ADVANCED)
+
+Tambahkan instruksi:
+
+"Berikan contoh pseudo-code untuk parsing dan rendering card"
